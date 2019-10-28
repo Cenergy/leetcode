@@ -11,12 +11,11 @@
  * @return {number[]}
  */
 var twoSum = function(nums, target) {
-  for (i = 0; i < nums.length; i++) {
-    for (j = i + 1; j < nums.length; j++) {
-      if (nums[i] + nums[j] === target) {
-        return [i, j];
-      }
-    }
+  const map = new Map();
+  for (let i = 0; i < nums.length; i++) {
+    const otherIndex = map.get(target - nums[i]);
+    if (otherIndex !== undefined) return [otherIndex, i];
+    map.set(nums[i], i);
   }
 };
 // @lc code=end
